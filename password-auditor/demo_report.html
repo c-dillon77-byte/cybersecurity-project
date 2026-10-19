@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Password Audit Report</title>
+<style>
+  body {
+    margin: 0; background: #f1f5f9; color: #0f172a;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  main {
+    max-width: 1050px; margin: 2rem auto; background: #fff;
+    padding: 2rem; border-radius: 12px; box-shadow: 0 8px 24px #0f172a22;
+  }
+  h1 { margin-top: 0; }
+  h2 { border-bottom: 2px solid #e2e8f0; padding-bottom: .3rem; }
+  .cards {
+    display: grid; gap: 1rem; margin: 1rem 0 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  }
+  .card {
+    background: #f8fafc; border: 1px solid #e2e8f0;
+    border-radius: 8px; padding: 1rem; text-align: center;
+  }
+  .card .n { font-size: 1.7rem; font-weight: 700; }
+  .card .l { color: #64748b; font-size: .85rem; }
+  table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+  th, td {
+    text-align: left; padding: .5rem .55rem;
+    border-bottom: 1px solid #e2e8f0; vertical-align: top;
+  }
+  th { background: #0f172a; color: #fff; }
+  tr:nth-child(even) { background: #f8fafc; }
+  .pill {
+    color: #fff; padding: .12rem .45rem;
+    border-radius: 999px; font-size: .75rem;
+  }
+  code { background: #e2e8f0; padding: .1rem .35rem; border-radius: 4px; }
+  .muted { color: #64748b; font-size: .9rem; }
+  .warn {
+    background: #fff7ed; border-left: 4px solid #c2410c;
+    padding: .75rem 1rem;
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Password Audit Report</h1>
+  <p class="muted">Generated 2026-10-18 20:32:25 · policy:
+    <code>nist</code></p>
+  <div class="warn">Plaintext passwords are masked (e.g. <code>P*****d</code>).
+  Handle real credentials only on systems you are authorized to audit.</div>
+  <div class="cards">
+    <div class="card"><div class="n">16</div><div class="l">Accounts</div></div>
+    <div class="card"><div class="n">13</div><div class="l">Failed</div></div>
+    <div class="card"><div class="n">81.2%</div><div class="l">Fail rate</div></div>
+    <div class="card"><div class="n">3</div><div class="l">Passed</div></div>
+    <div class="card"><div class="n">1</div><div class="l">Reuse groups</div></div>
+  </div>
+  <h2>Most common weaknesses</h2>
+  <table><tr><th>Weakness</th><th>Count</th></tr><tr><td>found in the common-password list</td><td>8</td></tr><tr><td>shorter than 8 characters</td><td>6</td></tr><tr><td>contains a keyboard walk</td><td>4</td></tr><tr><td>contains the username</td><td>2</td></tr><tr><td>contains a repeated character run</td><td>1</td></tr><tr><td>contains a sequential run</td><td>1</td></tr><tr><td>contains a company/lab dictionary word</td><td>1</td></tr><tr><td>password reused across accounts</td><td>1</td></tr></table>
+  <h2>Password reuse</h2>
+  <ul><li>dave, pat</li></ul>
+  <h2>Per-account results</h2>
+  <table>
+    <tr><th>User</th><th>Masked</th><th>Score</th><th>Entropy</th>
+    <th>Result</th><th>Label</th><th>Failures</th></tr>
+    <tr><td>alice</td><td><code>C************************!</code></td><td>100</td><td>166.2</td><td><span class='pill' style='background:#15803d'>pass</span></td><td>strong</td><td>-</td></tr><tr><td>bob</td><td><code>b*****4</code></td><td>50</td><td>36.2</td><td><span class='pill' style='background:#b91c1c'>fail</span></td><td>weak</td><td>shorter than 8 characters; contains the username</td></tr><tr><td>carol</td><td><code>P******d</code></td><td>55</td><td>52.4</td><td><span class='pill' style='background:#b91c1c'>fail</span></td><td>weak</td><td>found in the common-password list (incl. leetspeak variants)</td></tr><tr><td>dave</td><td><code>q****y</code></td><td>10</td><td>28.2</td><td><span class='pill' style='background:#b91c1c'>fail</span></td><td>very weak</td><td>shorter than 8 characters; contains a keyboard walk (e.g. qwerty); found in the common-password list (incl. leetspeak variants)</td></tr><tr><td>erin</td><td><code>S*********!</code></td><td>60</td><td>72.1</td><td><span class='pill' style='background:#b91c1c'>fail</span></td><td>moderate</td><td>found in the common-password list (incl. leetspeak variants)</td></tr><tr><td>frank</td><td><code>a******1</code></td><td>80</td><td>41.4</td><td><span class='pill' style='background:#b91c1c'>fail</span></td><td>strong</td><td>contains a repeated character run (e.g. aaaa)</td></tr><tr><td>grace</td><td><code>T*************************e</code></td><td>100</td><td>160.8</td><td><span class='pill' style='background:#15803d'>pass</span></td><td>strong</td><td>-</td></tr><tr><td>heidi</td><td><code>a***n</code></td><td>20</td><td>23.5</td><td><span class='pill' style='background:#b91c1c'>fail</span></td><td>very weak</td><td>shorter than 8 characters; found in the common-password list (incl. leetspeak variants)</td></tr><tr><td>ivan</td><td><code>1******8</code></td><td>10</td><td>26.6</td><td><span class='pill' style='background:#b91c1c'>fail</span></td><td>very weak</td><td>contains a sequential run (e.g. 1234 or abcd); contains a keyboard walk (e.g. qwerty); found in the common-password list (incl. leetspeak variants)</td></tr><tr><td>judy</td><td><code>C************3</code></td><td>85</td><td>83.4</td><td><span class='pill' style='background:#b91c1c'>fail</span></td><td>strong</td><td>contains a company/lab dictionary word</td></tr><tr><td>karen</td><td><code>a****3</code></td><td>30</td><td>31.0</td><td><span class='pill' style='background:#b91c1c'>fail</span></td><td>very weak</td><td>shorter than 8 characters; found in the common-password list (incl. leetspeak variants)</td></tr><tr><td>leo</td><td><code>l*o</code></td><td>40</td><td>14.1</td><td><span class='pill' style='background:#b91c1c'>fail</span></td><td>weak</td><td>shorter than 8 characters; contains the username</td></tr><tr><td>mallory</td><td><code>Z*********F</code></td><td>75</td><td>51.7</td><td><span class='pill' style='background:#b91c1c'>fail</span></td><td>moderate</td><td>contains a keyboard walk (e.g. qwerty)</td></tr><tr><td>nancy</td><td><code>W******1</code></td><td>55</td><td>47.6</td><td><span class='pill' style='background:#b91c1c'>fail</span></td><td>weak</td><td>found in the common-password list (incl. leetspeak variants)</td></tr><tr><td>oscar</td><td><code>T*********3</code></td><td>100</td><td>72.1</td><td><span class='pill' style='background:#15803d'>pass</span></td><td>strong</td><td>-</td></tr><tr><td>pat</td><td><code>q****y</code></td><td>10</td><td>28.2</td><td><span class='pill' style='background:#b91c1c'>fail</span></td><td>very weak</td><td>shorter than 8 characters; contains a keyboard walk (e.g. qwerty); found in the common-password list (incl. leetspeak variants)</td></tr>
+  </table>
+  <h2>Hash demo (why salting matters)</h2><table><tr><th>Algorithm</th><th>Digest prefix</th><th>ms</th><th>Verdict</th></tr><tr><td>MD5 (unsalted)</td><td><code>7ddb76daf674ce5b…</code></td><td>0.0427</td><td>Broken for passwords — too fast, no salt</td></tr><tr><td>SHA-1 (unsalted)</td><td><code>9b1c23fb9e348d93…</code></td><td>0.0081</td><td>Not appropriate for password storage</td></tr><tr><td>PBKDF2-HMAC-SHA256 (200k iters, random salt)</td><td><code>0b913c40a0a7a039…</code></td><td>34.052</td><td>Acceptable slow hash when tuned; salt stops rainbow tables</td></tr><tr><td>scrypt (n=2^14, r=8, p=1, random salt)</td><td><code>d3b7c569e74cc5ae…</code></td><td>48.661</td><td>Memory-hard; better resistance to GPU/ASIC guessing</td></tr></table><p class='muted'>Store passwords with a unique salt and a slow KDF (PBKDF2, scrypt, bcrypt, or argon2). Fast unsalted MD5/SHA-1 make offline guessing trivial.</p>
+  <p class="muted">Synthetic lab data. HIBP uses k-anonymity
+  (5-char SHA-1 prefix).</p>
+</main>
+</body>
+</html>
