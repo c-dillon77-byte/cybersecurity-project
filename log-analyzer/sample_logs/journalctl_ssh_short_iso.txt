@@ -1,0 +1,6 @@
+2026-10-18T11:00:00+00:00 lab-jump sshd[3001]: Failed password for root from 198.51.100.20 port 53001 ssh2
+2026-10-18T11:00:10+00:00 lab-jump sshd[3002]: Failed password for root from 198.51.100.20 port 53002 ssh2
+2026-10-18T11:00:20+00:00 lab-jump sshd[3003]: Failed password for root from 198.51.100.20 port 53003 ssh2
+2026-10-18T11:00:30+00:00 lab-jump sshd[3004]: Failed password for root from 198.51.100.20 port 53004 ssh2
+2026-10-18T11:00:40+00:00 lab-jump sshd[3005]: Failed password for root from 198.51.100.20 port 53005 ssh2
+2026-10-18T12:00:00+00:00 lab-jump sshd[3100]: Accepted password for bob from 192.168.10.50 port 54001 ssh2

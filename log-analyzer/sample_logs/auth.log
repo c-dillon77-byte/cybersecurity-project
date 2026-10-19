@@ -1,0 +1,51 @@
+Oct 18 08:01:12 lab-jump sshd[1001]: Accepted publickey for alice from 10.20.30.40 port 51234 ssh2: RSA SHA256:SyntheticKeyFingerprintAlice0001
+Oct 18 08:01:12 lab-jump sshd[1001]: pam_unix(sshd:session): session opened for user alice by (uid=0)
+Oct 18 08:05:44 lab-jump sudo:     alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/systemctl status ssh
+Oct 18 08:05:44 lab-jump sudo: pam_unix(sudo:session): session opened for user root by alice(uid=1000)
+Oct 18 08:15:03 lab-jump sshd[1010]: Accepted password for bob from 192.168.10.50 port 49821 ssh2
+Oct 18 08:15:03 lab-jump sshd[1010]: pam_unix(sshd:session): session opened for user bob by (uid=0)
+Oct 18 09:00:01 lab-jump CRON[1100]: pam_unix(cron:session): session opened for user root by (uid=0)
+Oct 18 09:00:01 lab-jump CRON[1100]: pam_unix(cron:session): session closed for user root
+Oct 18 10:12:01 lab-jump sshd[1201]: Invalid user oracle from 203.0.113.50 port 40001
+Oct 18 10:12:02 lab-jump sshd[1201]: Failed password for invalid user oracle from 203.0.113.50 port 40001 ssh2
+Oct 18 10:12:05 lab-jump sshd[1202]: Invalid user postgres from 203.0.113.50 port 40002
+Oct 18 10:12:06 lab-jump sshd[1202]: Failed password for invalid user postgres from 203.0.113.50 port 40002 ssh2
+Oct 18 10:12:09 lab-jump sshd[1203]: Invalid user admin from 203.0.113.50 port 40003
+Oct 18 10:12:10 lab-jump sshd[1203]: Failed password for invalid user admin from 203.0.113.50 port 40003 ssh2
+Oct 18 10:12:13 lab-jump sshd[1204]: Invalid user test from 203.0.113.50 port 40004
+Oct 18 10:12:14 lab-jump sshd[1204]: Failed password for invalid user test from 203.0.113.50 port 40004 ssh2
+Oct 18 10:12:17 lab-jump sshd[1205]: Invalid user ubuntu from 203.0.113.50 port 40005
+Oct 18 10:12:18 lab-jump sshd[1205]: Failed password for invalid user ubuntu from 203.0.113.50 port 40005 ssh2
+Oct 18 10:12:21 lab-jump sshd[1206]: Invalid user pi from 203.0.113.50 port 40006
+Oct 18 10:12:22 lab-jump sshd[1206]: Failed password for invalid user pi from 203.0.113.50 port 40006 ssh2
+Oct 18 11:00:00 lab-jump sshd[1300]: Failed password for root from 198.51.100.20 port 41001 ssh2
+Oct 18 11:00:05 lab-jump sshd[1301]: Failed password for root from 198.51.100.20 port 41002 ssh2
+Oct 18 11:00:10 lab-jump sshd[1302]: Failed password for root from 198.51.100.20 port 41003 ssh2
+Oct 18 11:00:15 lab-jump sshd[1303]: Failed password for root from 198.51.100.20 port 41004 ssh2
+Oct 18 11:00:20 lab-jump sshd[1304]: Failed password for root from 198.51.100.20 port 41005 ssh2
+Oct 18 11:00:25 lab-jump sshd[1305]: Failed password for root from 198.51.100.20 port 41006 ssh2
+Oct 18 11:00:30 lab-jump sshd[1306]: Failed password for root from 198.51.100.20 port 41007 ssh2
+Oct 18 11:00:35 lab-jump sshd[1307]: Failed password for root from 198.51.100.20 port 41008 ssh2
+Oct 18 11:00:40 lab-jump sshd[1308]: Connection closed by authenticating user root 198.51.100.20 port 41008 [preauth]
+Oct 18 11:30:01 lab-jump sshd[1400]: Failed password for alice from 203.0.113.80 port 42001 ssh2
+Oct 18 11:30:20 lab-jump sshd[1401]: Failed password for alice from 203.0.113.80 port 42002 ssh2
+Oct 18 11:30:40 lab-jump sshd[1402]: Failed password for alice from 203.0.113.80 port 42003 ssh2
+Oct 18 11:31:00 lab-jump sshd[1403]: Failed password for alice from 203.0.113.80 port 42004 ssh2
+Oct 18 11:31:20 lab-jump sshd[1404]: Failed password for alice from 203.0.113.80 port 42005 ssh2
+Oct 18 11:31:45 lab-jump sshd[1405]: Accepted password for alice from 203.0.113.80 port 42006 ssh2
+Oct 18 11:31:45 lab-jump sshd[1405]: pam_unix(sshd:session): session opened for user alice by (uid=0)
+Oct 18 12:00:10 lab-jump sshd[1500]: Failed password for bob from 10.50.0.99 port 43001 ssh2
+Oct 18 12:00:15 lab-jump sshd[1501]: Failed password for bob from 10.50.0.99 port 43002 ssh2
+Oct 18 12:05:00 lab-jump sshd[1510]: Accepted publickey for carol from 192.168.10.60 port 44001 ssh2: ED25519 SHA256:SyntheticKeyFingerprintCarol0002
+Oct 18 14:22:11 lab-jump sudo:      bob : user NOT in sudoers ; TTY=pts/2 ; PWD=/home/bob ; USER=root ; COMMAND=/bin/bash
+Oct 18 14:22:30 lab-jump sudo:      bob : 3 incorrect password attempts ; TTY=pts/2 ; PWD=/home/bob ; USER=root ; COMMAND=/usr/bin/apt update
+Oct 18 15:01:00 lab-jump sshd[1600]: Accepted password for dave from 192.0.2.10 port 45001 ssh2
+Oct 18 22:15:33 lab-jump sshd[1700]: Accepted password for alice from 10.20.30.40 port 46001 ssh2
+Oct 18 23:45:01 lab-jump sshd[1800]: Failed password for root from 203.0.113.99 port 47001 ssh2
+Oct 18 23:45:10 lab-jump sshd[1801]: Failed password for root from 203.0.113.99 port 47002 ssh2
+Oct 18 23:45:20 lab-jump sshd[1802]: Failed password for root from 203.0.113.99 port 47003 ssh2
+Oct 18 23:45:30 lab-jump sshd[1803]: Failed password for root from 203.0.113.99 port 47004 ssh2
+Oct 18 23:45:40 lab-jump sshd[1804]: Failed password for root from 203.0.113.99 port 47005 ssh2
+Oct 19 01:05:00 lab-jump sshd[1900]: Accepted password for eve from 198.51.100.77 port 48001 ssh2
+Oct 19 02:10:00 lab-jump sshd[1910]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=203.0.113.50 user=alice
+Oct 19 02:10:02 lab-jump sshd[1910]: Failed password for alice from 203.0.113.50 port 48010 ssh2

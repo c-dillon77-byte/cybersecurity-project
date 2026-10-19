@@ -218,3 +218,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Synthetic sample logs used by tests and demos are meant to be committed.
+!*/sample_logs/*.log

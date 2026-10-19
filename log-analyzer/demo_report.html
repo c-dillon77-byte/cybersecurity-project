@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Auth Log Analysis Report</title>
+<style>
+  :root { font-family: "Segoe UI", system-ui, sans-serif; color: #0f172a; }
+  body { margin: 0; background: #f1f5f9; }
+  main { max-width: 1100px; margin: 2rem auto; background: #fff;
+         padding: 2rem; border-radius: 12px; box-shadow: 0 8px 24px #0f172a22; }
+  h1 { margin-top: 0; }
+  h2 { border-bottom: 2px solid #e2e8f0; padding-bottom: .3rem; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
+            gap: 1rem; margin: 1.2rem 0 2rem; }
+  .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;
+           padding: 1rem; text-align: center; }
+  .card .n { font-size: 1.8rem; font-weight: 700; }
+  .card .l { color: #64748b; font-size: .85rem; }
+  table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+  th, td { text-align: left; padding: .55rem .6rem; border-bottom: 1px solid #e2e8f0;
+            vertical-align: top; }
+  th { background: #0f172a; color: #fff; }
+  tr:nth-child(even) { background: #f8fafc; }
+  .sev { color: #fff; padding: .15rem .5rem; border-radius: 999px; font-size: .75rem;
+          text-transform: uppercase; letter-spacing: .03em; }
+  code { background: #e2e8f0; padding: .1rem .35rem; border-radius: 4px; }
+  .muted { color: #64748b; font-size: .9rem; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  @media (max-width: 800px) { .grid2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Auth Log Analysis Report</h1>
+  <p class="muted">Generated 2026-10-18 20:26:49 · files: auth.log</p>
+  <div class="cards">
+    <div class="card"><div class="n">45</div><div class="l">Events</div></div>
+    <div class="card"><div class="n">37</div><div class="l">Failures</div></div>
+    <div class="card"><div class="n">8</div><div class="l">Successes</div></div>
+    <div class="card"><div class="n">14</div><div class="l">Findings</div></div>
+    <div class="card"><div class="n">4</div><div class="l">Block IPs</div></div>
+  </div>
+  <div class="grid2">
+    <div>
+      <h2>Top offending IPs</h2>
+      <table><tr><th>IP</th><th>Failures</th></tr><tr><td>203.0.113.50</td><td>14</td></tr><tr><td>198.51.100.20</td><td>9</td></tr><tr><td>203.0.113.80</td><td>5</td></tr><tr><td>203.0.113.99</td><td>5</td></tr><tr><td>10.50.0.99</td><td>2</td></tr></table>
+    </div>
+    <div>
+      <h2>Top targeted users</h2>
+      <table><tr><th>User</th><th>Failures</th></tr><tr><td>root</td><td>14</td></tr><tr><td>alice</td><td>7</td></tr><tr><td>bob</td><td>4</td></tr><tr><td>oracle</td><td>2</td></tr><tr><td>postgres</td><td>2</td></tr><tr><td>admin</td><td>2</td></tr><tr><td>test</td><td>2</td></tr><tr><td>ubuntu</td><td>2</td></tr><tr><td>pi</td><td>2</td></tr></table>
+    </div>
+  </div>
+  <h2>Findings</h2>
+  <table>
+    <tr><th>Sev</th><th>MITRE</th><th>Title</th><th>Detail</th><th>IP</th><th>User</th><th>Count</th></tr>
+    <tr><td><span class='sev' style='background:#b91c1c'>high</span></td><td><code>T1110.003</code><br><small>Brute Force: Password Spraying</small></td><td>Password spraying</td><td>203.0.113.50 tried 6 usernames within 10m: admin, oracle, pi, postgres, test, ubuntu</td><td>203.0.113.50</td><td></td><td>6</td></tr><tr><td><span class='sev' style='background:#b91c1c'>high</span></td><td><code>T1110.001</code><br><small>Brute Force: Password Guessing</small></td><td>SSH brute force</td><td>8 failed authentications from 198.51.100.20 within 10m (users: root)</td><td>198.51.100.20</td><td>root</td><td>8</td></tr><tr><td><span class='sev' style='background:#b91c1c'>high</span></td><td><code>T1110.001</code><br><small>Brute Force: Password Guessing</small></td><td>SSH brute force</td><td>6 failed authentications from 203.0.113.50 within 10m (users: admin, oracle, pi, postgres, test, ubuntu)</td><td>203.0.113.50</td><td></td><td>6</td></tr><tr><td><span class='sev' style='background:#b91c1c'>high</span></td><td><code>T1110.001</code><br><small>Brute Force: Password Guessing</small></td><td>SSH brute force</td><td>5 failed authentications from 203.0.113.80 within 10m (users: alice)</td><td>203.0.113.80</td><td>alice</td><td>5</td></tr><tr><td><span class='sev' style='background:#b91c1c'>high</span></td><td><code>T1110.001</code><br><small>Brute Force: Password Guessing</small></td><td>SSH brute force</td><td>5 failed authentications from 203.0.113.99 within 10m (users: root)</td><td>203.0.113.99</td><td>root</td><td>5</td></tr><tr><td><span class='sev' style='background:#b91c1c'>high</span></td><td><code>T1078</code><br><small>Valid Accounts</small></td><td>Successful login after failures</td><td>alice logged in from 203.0.113.80 via password after 5 recent failures — possible compromise</td><td>203.0.113.80</td><td>alice</td><td>6</td></tr><tr><td><span class='sev' style='background:#c2410c'>medium</span></td><td><code>T1589.001</code><br><small>Gather Victim Identity Information: Credentials</small></td><td>Invalid-user enumeration</td><td>203.0.113.50 probed 6 invalid usernames within 15m</td><td>203.0.113.50</td><td></td><td>12</td></tr><tr><td><span class='sev' style='background:#c2410c'>medium</span></td><td><code>T1078</code><br><small>Valid Accounts</small></td><td>Login from new IP</td><td>alice accepted from new IP 203.0.113.80 (previously seen: 10.20.30.40)</td><td>203.0.113.80</td><td>alice</td><td>1</td></tr><tr><td><span class='sev' style='background:#c2410c'>medium</span></td><td><code>T1110.001</code><br><small>Brute Force: Password Guessing</small></td><td>Root SSH login attempts</td><td>8 root auth event(s) from 198.51.100.20</td><td>198.51.100.20</td><td>root</td><td>8</td></tr><tr><td><span class='sev' style='background:#c2410c'>medium</span></td><td><code>T1110.001</code><br><small>Brute Force: Password Guessing</small></td><td>Root SSH login attempts</td><td>5 root auth event(s) from 203.0.113.99</td><td>203.0.113.99</td><td>root</td><td>5</td></tr><tr><td><span class='sev' style='background:#c2410c'>medium</span></td><td><code>T1548.003</code><br><small>Abuse Elevation Control Mechanism: Sudo and Sudo Caching</small></td><td>Sudo failure</td><td>bob: sudo not in sudoers — /bin/bash</td><td></td><td>bob</td><td>1</td></tr><tr><td><span class='sev' style='background:#c2410c'>medium</span></td><td><code>T1548.003</code><br><small>Abuse Elevation Control Mechanism: Sudo and Sudo Caching</small></td><td>Sudo failure</td><td>bob: sudo bad password — /usr/bin/apt update</td><td></td><td>bob</td><td>1</td></tr><tr><td><span class='sev' style='background:#a16207'>low</span></td><td><code>T1078</code><br><small>Valid Accounts</small></td><td>Off-hours login</td><td>alice logged in from 10.20.30.40 at 22:15:33 (off-hours 22:00–06:00)</td><td>10.20.30.40</td><td>alice</td><td>1</td></tr><tr><td><span class='sev' style='background:#a16207'>low</span></td><td><code>T1078</code><br><small>Valid Accounts</small></td><td>Off-hours login</td><td>eve logged in from 198.51.100.77 at 01:05:00 (off-hours 22:00–06:00)</td><td>198.51.100.77</td><td>eve</td><td>1</td></tr>
+  </table>
+  <h2>Suggested block list</h2><ul><li><code>198.51.100.20</code></li><li><code>203.0.113.50</code></li><li><code>203.0.113.80</code></li><li><code>203.0.113.99</code></li></ul><p class='muted'>Printed for review only — this tool never applies firewall rules.</p>
+  <p class="muted">Synthetic / lab use. Sample IPs are RFC 1918 or RFC 5737.</p>
+</main>
+</body>
+</html>
