@@ -17,10 +17,10 @@ Each tool lives in its own folder with its own README, `requirements.txt` and `t
 | Project | What it demonstrates | Status |
 |---|---|---|
 | `auth-log-analyzer/` | Parsing Linux `auth.log` / Windows logon events to flag failed-login bursts, brute-force patterns and unusual source IPs; summary report; tested with sample (sanitized) logs | 🟡 Planned |
-| `password-auditor/` | Checking passwords against a policy (length, complexity, common/breached-password lists) with hashing and no plaintext storage or logging | 🟡 Planned |
+| [`password-auditor/`](password-auditor/) | Checking passwords against a policy (length, complexity, common-password list, optional HIBP k-anonymity breach check) with masked reports and no plaintext storage or logging | 🔵 In review |
 | `nmap-to-html-report/` | Converting nmap XML output into a clean HTML report (hosts, open ports, services, versions) for sharing scan results | 🟡 Planned |
 
-*Status key: 🟡 Planned · 🟢 In progress · ✅ Complete*
+*Status key: 🟡 Planned · 🟢 In progress · 🔵 In review · ✅ Complete*
 
 ## How to run
 

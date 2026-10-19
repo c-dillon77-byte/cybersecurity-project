@@ -1,0 +1,16 @@
+username,password,note
+alice,CorrectHorseBatteryStaple!,strong passphrase-style
+bob,bob2024,contains username + short year
+carol,P@ssw0rd,leetspeak of password / common
+dave,qwerty,keyboard walk / common
+erin,Summer2022!,seasonal common pattern
+frank,aaaa1111,repeats + sequence
+grace,Th1sIsAFairlyLongPassphrase,long but may pass NIST-ish
+heidi,admin,common + too short
+ivan,12345678,common digits
+judy,CompanyName123,company word (lab corp token)
+karen,abc123,common
+leo,leo,username only
+mallory,ZXCVBNMASDF,keyboard walk reverse-ish
+nancy,Welcome1,common complexity-style
+oscar,Tr0ub4dor&3,xkcd-style but short-ish composition
