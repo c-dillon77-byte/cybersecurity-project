@@ -2,9 +2,9 @@
 <!DOCTYPE nmaprun>
 <?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
 <!-- Synthetic lab scan for portfolio demo. RFC 1918 / RFC 5737 only. Not a real engagement. -->
-<nmaprun scanner="nmap" args="nmap -sV -sC -oX lab_scan1.xml 192.168.10.0/28" start="1729267200" startstr="Sat Oct 18 12:00:00 2026" version="7.94" xmloutputversion="1.05">
+<nmaprun scanner="nmap" args="nmap -sV -sC -oX lab_scan1.xml 192.168.10.0/28" start="1792324800" startstr="Sun Oct 18 12:00:00 2026" version="7.94" xmloutputversion="1.05">
 <scaninfo type="syn" protocol="tcp" numservices="1000" services="1-1000"/>
-<host starttime="1729267201" endtime="1729267220">
+<host starttime="1792324801" endtime="1792324820">
   <status state="up" reason="arp-response" reason_ttl="0"/>
   <address addr="192.168.10.1" addrtype="ipv4"/>
   <address addr="00:11:22:33:44:01" addrtype="mac" vendor="Cisco"/>
@@ -34,7 +34,7 @@
   </os>
   <times srtt="1000" rttvar="500" to="100000"/>
 </host>
-<host starttime="1729267221" endtime="1729267250">
+<host starttime="1792324821" endtime="1792324850">
   <status state="up" reason="arp-response" reason_ttl="0"/>
   <address addr="192.168.10.10" addrtype="ipv4"/>
   <address addr="00:11:22:33:44:10" addrtype="mac" vendor="VMware"/>
@@ -72,7 +72,7 @@
     </osmatch>
   </os>
 </host>
-<host starttime="1729267251" endtime="1729267280">
+<host starttime="1792324851" endtime="1792324880">
   <status state="up" reason="arp-response" reason_ttl="0"/>
   <address addr="192.168.10.20" addrtype="ipv4"/>
   <address addr="00:11:22:33:44:20" addrtype="mac" vendor="VMware"/>
@@ -104,7 +104,7 @@
     </osmatch>
   </os>
 </host>
-<host starttime="1729267281" endtime="1729267295">
+<host starttime="1792324881" endtime="1792324895">
   <status state="up" reason="arp-response" reason_ttl="0"/>
   <address addr="192.168.10.30" addrtype="ipv4"/>
   <address addr="00:11:22:33:44:30" addrtype="mac" vendor="HP"/>
@@ -136,7 +136,7 @@
     </osmatch>
   </os>
 </host>
-<host starttime="1729267296" endtime="1729267310">
+<host starttime="1792324896" endtime="1792324910">
   <status state="up" reason="arp-response" reason_ttl="0"/>
   <address addr="192.168.10.40" addrtype="ipv4"/>
   <address addr="00:11:22:33:44:40" addrtype="mac" vendor="Synology"/>
@@ -171,11 +171,11 @@
   </os>
 </host>
 <!-- Down host for completeness -->
-<host starttime="1729267311" endtime="1729267312">
+<host starttime="1792324911" endtime="1792324912">
   <status state="down" reason="no-response" reason_ttl="0"/>
   <address addr="192.168.10.50" addrtype="ipv4"/>
 </host>
-<runstats><finished time="1729267315" timestr="Sat Oct 18 12:01:55 2026" summary="Nmap done at Sat Oct 18 12:01:55 2026; 16 IP addresses (5 hosts up) scanned in 115.00 seconds" elapsed="115.00" exit="success"/>
+<runstats><finished time="1792324915" timestr="Sun Oct 18 12:01:55 2026" summary="Nmap done at Sun Oct 18 12:01:55 2026; 16 IP addresses (5 hosts up) scanned in 115.00 seconds" elapsed="115.00" exit="success"/>
 <hosts up="5" down="1" total="6"/>
 </runstats>
 </nmaprun>
