@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Vulnerability Scan Report</title>
+<style>
+  body {
+    margin: 0; background: #f1f5f9; color: #0f172a;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  main {
+    max-width: 1100px; margin: 2rem auto; background: #fff;
+    padding: 2rem; border-radius: 12px; box-shadow: 0 8px 24px #0f172a22;
+  }
+  h1 { margin-top: 0; }
+  h2 { border-bottom: 2px solid #e2e8f0; padding-bottom: .3rem; }
+  .cards {
+    display: grid; gap: 1rem; margin: 1rem 0 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+  .card {
+    background: #f8fafc; border: 1px solid #e2e8f0;
+    border-radius: 8px; padding: .9rem; text-align: center;
+  }
+  .card .n { font-size: 1.6rem; font-weight: 700; }
+  .card .l { color: #64748b; font-size: .8rem; }
+  table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  th, td {
+    text-align: left; padding: .5rem .55rem;
+    border-bottom: 1px solid #e2e8f0; vertical-align: top;
+  }
+  th { background: #0f172a; color: #fff; }
+  tr:nth-child(even) { background: #f8fafc; }
+  .sev {
+    color: #fff; padding: .12rem .45rem; border-radius: 999px;
+    font-size: .72rem; text-transform: uppercase;
+  }
+  code { background: #e2e8f0; padding: .1rem .3rem; border-radius: 4px; }
+  .muted { color: #64748b; font-size: .9rem; }
+  .banner {
+    background: #eff6ff; border-left: 4px solid #1d4ed8;
+    padding: .75rem 1rem; margin-bottom: 1rem;
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Vulnerability Scan Report</h1>
+  <p class="muted">Generated 2026-10-18 20:38:35</p>
+  <div class="banner">
+    Synthetic lab sample (RFC 1918 / RFC 5737). CVE IDs are well-known examples
+    attached for demonstration — not evidence of a real compromise.
+  </div>
+  <p class="muted">Scan: <code>sample_scans/lab_scan2.xml</code><br/>
+  Args: <code>nmap -sV -sC -oX lab_scan1.xml 192.168.10.0/28</code></p>
+  <div class="cards">
+    <div class="card"><div class="n">6</div><div class="l">Hosts up</div></div>
+    <div class="card"><div class="n">18</div><div class="l">Findings</div></div>
+    <div class="card"><div class="n">1</div><div class="l">Critical</div></div>
+    <div class="card"><div class="n">10</div><div class="l">High</div></div>
+    <div class="card"><div class="n">7</div><div class="l">Medium</div></div>
+    <div class="card"><div class="n">0</div><div class="l">Low</div></div>
+  </div>
+  <h2>Hosts</h2>
+  <table>
+    <tr><th>IP</th><th>Hostname</th><th>OS</th><th>Open ports</th></tr>
+    <tr><td>192.168.10.1</td><td>r1-core.lab.local</td><td>Cisco IOS 15.X</td><td>22/tcp, 80/tcp</td></tr><tr><td>192.168.10.10</td><td>win-dc01.lab.local</td><td>Microsoft Windows Server 2016</td><td>135/tcp, 139/tcp, 445/tcp, 3389/tcp, 5985/tcp</td></tr><tr><td>192.168.10.20</td><td>linux-web01.lab.local</td><td>Linux 4.4 - 4.15</td><td>22/tcp, 80/tcp, 3306/tcp, 443/tcp</td></tr><tr><td>192.168.10.30</td><td>printer-lobby.lab.local</td><td>HP embedded</td><td>23/tcp, 80/tcp, 9100/tcp, 161/udp</td></tr><tr><td>192.168.10.40</td><td>nas-backup.lab.local</td><td>Linux 4.X</td><td>21/tcp, 22/tcp, 445/tcp, 5000/tcp</td></tr><tr><td>192.168.10.60</td><td>iot-cam.lab.local</td><td>-</td><td>80/tcp, 23/tcp</td></tr>
+  </table>
+  <h2>Findings</h2>
+  <table>
+    <tr><th>Sev</th><th>Host</th><th>Port</th><th>Finding</th><th>Remediation</th></tr>
+    <tr><td><span class='sev' style='background:#7f1d1d'>critical</span></td><td>192.168.10.10<br><small>win-dc01.lab.local</small></td><td>tcp/445</td><td>Possible SMBv1 / legacy SMB exposure<br><small>tcp/445 microsoft-ds Windows Server 2016 Standard 14393 microsoft-ds</small></td><td>Disable SMBv1 organization-wide; prefer SMB 2.1+/3.x only.</td></tr><tr><td><span class='sev' style='background:#b91c1c'>high</span></td><td>192.168.10.10<br><small>win-dc01.lab.local</small></td><td>tcp/3389</td><td>RDP exposed on the network<br><small>tcp/3389 ms-wbt-server Microsoft Terminal Services</small></td><td>Restrict RDP to jump hosts/VPN; enforce NLA and strong auth; consider RD Gateway.</td></tr><tr><td><span class='sev' style='background:#b91c1c'>high</span></td><td>192.168.10.10<br><small>win-dc01.lab.local</small></td><td>tcp/445</td><td>SMB message signing not required<br><small>tcp/445 microsoft-ds Windows Server 2016 Standard 14393 microsoft-ds [smb-security-mode]</small></td><td>Require SMB signing via GPO (Microsoft network server/client: Digitally sign communications).</td></tr><tr><td><span class='sev' style='background:#b91c1c'>high</span></td><td>192.168.10.10<br><small>win-dc01.lab.local</small></td><td>tcp/3389</td><td>Weak TLS/SSL ciphers or protocols<br><small>tcp/3389 ms-wbt-server Microsoft Terminal Services [ssl-enum-ciphers]</small></td><td>Disable SSLv3/TLS 1.0/1.1; allow only strong TLS 1.2+ cipher suites (AEAD).</td></tr><tr><td><span class='sev' style='background:#b91c1c'>high</span></td><td>192.168.10.20<br><small>linux-web01.lab.local</small></td><td>tcp/22</td><td>CVE-2016-10009 (CVSS 7.5)<br><code>CVE-2016-10009</code> CVSS 7.5<br><small>tcp/22 OpenSSH 7.2p2 Ubuntu 4ubuntu2.10 — sample CVE from vulners NSE (lab data)</small></td><td>Patch or upgrade the affected service; review CVE-2016-10009 advisory and apply vendor fixes.</td></tr><tr><td><span class='sev' style='background:#b91c1c'>high</span></td><td>192.168.10.20<br><small>linux-web01.lab.local</small></td><td>tcp/80</td><td>CVE-2017-15715 (CVSS 8.1)<br><code>CVE-2017-15715</code> CVSS 8.1<br><small>tcp/80 Apache httpd 2.4.18 — sample CVE from vulners NSE (lab data)</small></td><td>Patch or upgrade the affected service; review CVE-2017-15715 advisory and apply vendor fixes.</td></tr><tr><td><span class='sev' style='background:#b91c1c'>high</span></td><td>192.168.10.20<br><small>linux-web01.lab.local</small></td><td>tcp/80</td><td>CVE-2019-0211 (CVSS 7.8)<br><code>CVE-2019-0211</code> CVSS 7.8<br><small>tcp/80 Apache httpd 2.4.18 — sample CVE from vulners NSE (lab data)</small></td><td>Patch or upgrade the affected service; review CVE-2019-0211 advisory and apply vendor fixes.</td></tr><tr><td><span class='sev' style='background:#b91c1c'>high</span></td><td>192.168.10.20<br><small>linux-web01.lab.local</small></td><td>tcp/443</td><td>Weak TLS/SSL ciphers or protocols<br><small>tcp/443 https Apache httpd 2.4.18 [ssl-enum-ciphers]</small></td><td>Disable SSLv3/TLS 1.0/1.1; allow only strong TLS 1.2+ cipher suites (AEAD).</td></tr><tr><td><span class='sev' style='background:#b91c1c'>high</span></td><td>192.168.10.30<br><small>printer-lobby.lab.local</small></td><td>tcp/23</td><td>Telnet service exposed<br><small>tcp/23 telnet HP JetDirect telnetd</small></td><td>Disable Telnet; use SSH instead. Block TCP/23 at the firewall.</td></tr><tr><td><span class='sev' style='background:#b91c1c'>high</span></td><td>192.168.10.40<br><small>nas-backup.lab.local</small></td><td>tcp/21</td><td>Anonymous FTP login allowed<br><small>tcp/21 ftp ProFTPD 1.3.5 [ftp-anon]</small></td><td>Disable anonymous FTP; require authenticated SFTP/FTPS and restrict shares.</td></tr><tr><td><span class='sev' style='background:#b91c1c'>high</span></td><td>192.168.10.60<br><small>iot-cam.lab.local</small></td><td>tcp/23</td><td>Telnet service exposed<br><small>tcp/23 telnet</small></td><td>Disable Telnet; use SSH instead. Block TCP/23 at the firewall.</td></tr><tr><td><span class='sev' style='background:#c2410c'>medium</span></td><td>192.168.10.20<br><small>linux-web01.lab.local</small></td><td>tcp/80</td><td>HTTP admin / login page on plaintext HTTP<br><small>tcp/80 http Apache httpd 2.4.18 [http-title]</small></td><td>Serve admin UIs over HTTPS only; restrict management interfaces to a secured VLAN.</td></tr><tr><td><span class='sev' style='background:#c2410c'>medium</span></td><td>192.168.10.20<br><small>linux-web01.lab.local</small></td><td>tcp/3306</td><td>MySQL exposed to the network<br><small>tcp/3306 mysql MySQL 5.7.33</small></td><td>Bind MySQL to localhost or a private DB VLAN; require TLS and strong auth.</td></tr><tr><td><span class='sev' style='background:#c2410c'>medium</span></td><td>192.168.10.20<br><small>linux-web01.lab.local</small></td><td>tcp/22</td><td>Outdated OpenSSH version<br><small>tcp/22 ssh OpenSSH 7.2p2 Ubuntu 4ubuntu2.10</small></td><td>Upgrade OpenSSH to a currently supported release and disable weak algorithms.</td></tr><tr><td><span class='sev' style='background:#c2410c'>medium</span></td><td>192.168.10.20<br><small>linux-web01.lab.local</small></td><td>tcp/22</td><td>CVE-2018-15473 (CVSS 5.3)<br><code>CVE-2018-15473</code> CVSS 5.3<br><small>tcp/22 OpenSSH 7.2p2 Ubuntu 4ubuntu2.10 — sample CVE from vulners NSE (lab data)</small></td><td>Patch or upgrade the affected service; review CVE-2018-15473 advisory and apply vendor fixes.</td></tr><tr><td><span class='sev' style='background:#c2410c'>medium</span></td><td>192.168.10.30<br><small>printer-lobby.lab.local</small></td><td>tcp/80</td><td>HTTP admin / login page on plaintext HTTP<br><small>tcp/80 http HP JetDirect httpd [http-title]</small></td><td>Serve admin UIs over HTTPS only; restrict management interfaces to a secured VLAN.</td></tr><tr><td><span class='sev' style='background:#c2410c'>medium</span></td><td>192.168.10.30<br><small>printer-lobby.lab.local</small></td><td>udp/161</td><td>SNMP service exposed<br><small>udp/161 snmp</small></td><td>Use SNMPv3 with authPriv; restrict source IPs; never leave community strings as public/private.</td></tr><tr><td><span class='sev' style='background:#c2410c'>medium</span></td><td>192.168.10.60<br><small>iot-cam.lab.local</small></td><td>tcp/80</td><td>HTTP admin / login page on plaintext HTTP<br><small>tcp/80 http BusyBox httpd [http-title]</small></td><td>Serve admin UIs over HTTPS only; restrict management interfaces to a secured VLAN.</td></tr>
+  </table>
+  
+  <h2>Diff vs baseline</h2>
+  <ul>
+    <li>New hosts: 192.168.10.60</li>
+    <li>Gone hosts: none</li>
+    <li>Ports opened: 192.168.10.20:tcp/3306, 192.168.10.60:tcp/23, 192.168.10.60:tcp/80</li>
+    <li>Ports closed: 192.168.10.1:tcp/23</li>
+    <li>New findings: 3; resolved: 1</li>
+  </ul>
+
+</main>
+</body>
+</html>

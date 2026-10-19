@@ -1,0 +1,172 @@
+{
+  "version": 1,
+  "description": "Editable risk rules for the vuln-scan-report tool (synthetic lab use).",
+  "service_rules": [
+    {
+      "id": "TELNET_OPEN",
+      "title": "Telnet service exposed",
+      "severity": "high",
+      "ports": [
+        23
+      ],
+      "services": [
+        "telnet"
+      ],
+      "remediation": "Disable Telnet; use SSH instead. Block TCP/23 at the firewall."
+    },
+    {
+      "id": "FTP_ANON",
+      "title": "Anonymous FTP login allowed",
+      "severity": "high",
+      "ports": [
+        21
+      ],
+      "services": [
+        "ftp"
+      ],
+      "script_id": "ftp-anon",
+      "script_contains": [
+        "Anonymous FTP login allowed"
+      ],
+      "remediation": "Disable anonymous FTP; require authenticated SFTP/FTPS and restrict shares."
+    },
+    {
+      "id": "SMB_SIGNING_NOT_REQUIRED",
+      "title": "SMB message signing not required",
+      "severity": "high",
+      "ports": [
+        445,
+        139
+      ],
+      "script_id": "smb-security-mode",
+      "script_contains": [
+        "message_signing: disabled",
+        "not required"
+      ],
+      "remediation": "Require SMB signing via GPO (Microsoft network server/client: Digitally sign communications)."
+    },
+    {
+      "id": "SMBv1_HINT",
+      "title": "Possible SMBv1 / legacy SMB exposure",
+      "severity": "critical",
+      "ports": [
+        445
+      ],
+      "script_contains_any_script": [
+        "SMBv1",
+        "smb1"
+      ],
+      "remediation": "Disable SMBv1 organization-wide; prefer SMB 2.1+/3.x only."
+    },
+    {
+      "id": "RDP_EXPOSED",
+      "title": "RDP exposed on the network",
+      "severity": "high",
+      "ports": [
+        3389
+      ],
+      "services": [
+        "ms-wbt-server",
+        "rdp"
+      ],
+      "remediation": "Restrict RDP to jump hosts/VPN; enforce NLA and strong auth; consider RD Gateway."
+    },
+    {
+      "id": "SNMP_EXPOSED",
+      "title": "SNMP service exposed",
+      "severity": "medium",
+      "ports": [
+        161
+      ],
+      "services": [
+        "snmp"
+      ],
+      "remediation": "Use SNMPv3 with authPriv; restrict source IPs; never leave community strings as public/private."
+    },
+    {
+      "id": "HTTP_ADMIN_TITLE",
+      "title": "HTTP admin / login page on plaintext HTTP",
+      "severity": "medium",
+      "ports": [
+        80,
+        8080,
+        8000
+      ],
+      "script_id": "http-title",
+      "script_contains": [
+        "Admin",
+        "Login",
+        "login",
+        "Management",
+        "Camera"
+      ],
+      "remediation": "Serve admin UIs over HTTPS only; restrict management interfaces to a secured VLAN."
+    },
+    {
+      "id": "OLD_OPENSSH",
+      "title": "Outdated OpenSSH version",
+      "severity": "medium",
+      "ports": [
+        22
+      ],
+      "services": [
+        "ssh"
+      ],
+      "product_contains": [
+        "OpenSSH"
+      ],
+      "version_regex": "^([1-6]\\.|7\\.[0-5])",
+      "remediation": "Upgrade OpenSSH to a currently supported release and disable weak algorithms."
+    },
+    {
+      "id": "WEAK_TLS",
+      "title": "Weak TLS/SSL ciphers or protocols",
+      "severity": "high",
+      "script_id": "ssl-enum-ciphers",
+      "script_contains": [
+        "SSLv3",
+        "TLSv1.0",
+        "RC4",
+        "3DES",
+        " - D",
+        " - E",
+        " - F"
+      ],
+      "remediation": "Disable SSLv3/TLS 1.0/1.1; allow only strong TLS 1.2+ cipher suites (AEAD)."
+    },
+    {
+      "id": "MYSQL_EXPOSED",
+      "title": "MySQL exposed to the network",
+      "severity": "medium",
+      "ports": [
+        3306
+      ],
+      "services": [
+        "mysql"
+      ],
+      "remediation": "Bind MySQL to localhost or a private DB VLAN; require TLS and strong auth."
+    }
+  ],
+  "cvss_bands": {
+    "critical": [
+      9.0,
+      10.0
+    ],
+    "high": [
+      7.0,
+      8.9
+    ],
+    "medium": [
+      4.0,
+      6.9
+    ],
+    "low": [
+      0.1,
+      3.9
+    ],
+    "info": [
+      0.0,
+      0.0
+    ]
+  }
+}

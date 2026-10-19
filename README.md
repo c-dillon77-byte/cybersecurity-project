@@ -18,7 +18,7 @@ Each tool lives in its own folder with its own README, `requirements.txt` and `t
 |---|---|---|
 | [`log-analyzer/`](log-analyzer/) | Parsing Linux SSH/sudo auth logs (`auth.log`, `secure`, journalctl, `.gz`) to flag brute force, password spraying, success-after-failures and new-IP logins, with severities and MITRE ATT&CK IDs; HTML/JSON/CSV report; tested with synthetic logs | ✅ Complete |
 | `password-auditor/` | Checking passwords against a policy (length, complexity, common/breached-password lists) with hashing and no plaintext storage or logging | 🟡 Planned |
-| `nmap-to-html-report/` | Converting nmap XML output into a clean HTML report (hosts, open ports, services, versions) for sharing scan results | 🟡 Planned |
+| [`vuln-scan-report/`](vuln-scan-report/) | Converting nmap XML output into HTML/Markdown/JSON/CSV reports (hosts, open ports, services, versions) with JSON risk rules and scan-to-scan diffs; tested with synthetic lab scans | 🔵 In review |
 
 *Status key: 🟡 Planned · 🟢 In progress · 🔵 In review · ✅ Complete*
 
