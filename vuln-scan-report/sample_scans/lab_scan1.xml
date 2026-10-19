@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Synthetic lab scan for portfolio demo. RFC 1918 / RFC 5737 only. Not a real engagement. -->
+<nmaprun scanner="nmap" args="nmap -sV -sC -oX lab_scan1.xml 192.168.10.0/28" start="1729267200" startstr="Sat Oct 18 12:00:00 2026" version="7.94" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="1000" services="1-1000"/>
+<host starttime="1729267201" endtime="1729267220">
+  <status state="up" reason="arp-response" reason_ttl="0"/>
+  <address addr="192.168.10.1" addrtype="ipv4"/>
+  <address addr="00:11:22:33:44:01" addrtype="mac" vendor="Cisco"/>
+  <hostnames>
+    <hostname name="r1-core.lab.local" type="PTR"/>
+  </hostnames>
+  <ports>
+    <port protocol="tcp" portid="22">
+      <state state="open" reason="syn-ack" reason_ttl="64"/>
+      <service name="ssh" product="Cisco SSH" version="1.25" method="probed" conf="10"/>
+      <script id="ssh-hostkey" output="Synthetic hostkey fingerprint"/>
+    </port>
+    <port protocol="tcp" portid="23">
+      <state state="open" reason="syn-ack" reason_ttl="64"/>
+      <service name="telnet" product="Cisco telnetd" method="probed" conf="10"/>
+    </port>
+    <port protocol="tcp" portid="80">
+      <state state="open" reason="syn-ack" reason_ttl="64"/>
+      <service name="http" product="Cisco IOS http config" method="probed" conf="10"/>
+      <script id="http-title" output="Cisco Systems, Inc. Box"/>
+    </port>
+  </ports>
+  <os>
+    <osmatch name="Cisco IOS 15.X" accuracy="95" line="1000">
+      <osclass type="router" vendor="Cisco" osfamily="IOS" osgen="15.X" accuracy="95"/>
+    </osmatch>
+  </os>
+  <times srtt="1000" rttvar="500" to="100000"/>
+</host>
+<host starttime="1729267221" endtime="1729267250">
+  <status state="up" reason="arp-response" reason_ttl="0"/>
+  <address addr="192.168.10.10" addrtype="ipv4"/>
+  <address addr="00:11:22:33:44:10" addrtype="mac" vendor="VMware"/>
+  <hostnames>
+    <hostname name="win-dc01.lab.local" type="PTR"/>
+  </hostnames>
+  <ports>
+    <port protocol="tcp" portid="135">
+      <state state="open" reason="syn-ack" reason_ttl="128"/>
+      <service name="msrpc" product="Microsoft Windows RPC" method="probed" conf="10"/>
+    </port>
+    <port protocol="tcp" portid="139">
+      <state state="open" reason="syn-ack" reason_ttl="128"/>
+      <service name="netbios-ssn" product="Microsoft Windows netbios-ssn" method="probed" conf="10"/>
+    </port>
+    <port protocol="tcp" portid="445">
+      <state state="open" reason="syn-ack" reason_ttl="128"/>
+      <service name="microsoft-ds" product="Windows Server 2016 Standard 14393 microsoft-ds" method="probed" conf="10"/>
+      <script id="smb-security-mode" output="&#10;  account_used: guest&#10;  authentication_level: user&#10;  challenge_response: supported&#10;  message_signing: disabled (dangerous, but required by the server)&#10;  SMBv1: Enabled"/>
+      <script id="smb2-security-mode" output="&#10;  3.1.1: &#10;    Message signing enabled but not required"/>
+    </port>
+    <port protocol="tcp" portid="3389">
+      <state state="open" reason="syn-ack" reason_ttl="128"/>
+      <service name="ms-wbt-server" product="Microsoft Terminal Services" method="probed" conf="10"/>
+      <script id="ssl-enum-ciphers" output="&#10;  TLSv1.0: &#10;    ciphers: &#10;      TLS_RSA_WITH_RC4_128_SHA - D&#10;      TLS_RSA_WITH_3DES_EDE_CBC_SHA - D&#10;  TLSv1.2: &#10;    ciphers: &#10;      TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 - A"/>
+    </port>
+    <port protocol="tcp" portid="5985">
+      <state state="open" reason="syn-ack" reason_ttl="128"/>
+      <service name="http" product="Microsoft HTTPAPI httpd" version="2.0" extrainfo="SSDP/UPnP" method="probed" conf="10"/>
+    </port>
+  </ports>
+  <os>
+    <osmatch name="Microsoft Windows Server 2016" accuracy="97" line="2000">
+      <osclass type="general purpose" vendor="Microsoft" osfamily="Windows" osgen="2016" accuracy="97"/>
+    </osmatch>
+  </os>
+</host>
+<host starttime="1729267251" endtime="1729267280">
+  <status state="up" reason="arp-response" reason_ttl="0"/>
+  <address addr="192.168.10.20" addrtype="ipv4"/>
+  <address addr="00:11:22:33:44:20" addrtype="mac" vendor="VMware"/>
+  <hostnames>
+    <hostname name="linux-web01.lab.local" type="PTR"/>
+  </hostnames>
+  <ports>
+    <port protocol="tcp" portid="22">
+      <state state="open" reason="syn-ack" reason_ttl="64"/>
+      <service name="ssh" product="OpenSSH" version="7.2p2 Ubuntu 4ubuntu2.10" extrainfo="Ubuntu Linux; protocol 2.0" method="probed" conf="10"/>
+      <script id="vulners" output="&#10;  cpe:/a:openbsd:openssh:7.2p2: &#10;    	CVE-2016-10009	7.5	https://vulners.com/cve/CVE-2016-10009&#10;    	CVE-2018-15473	5.3	https://vulners.com/cve/CVE-2018-15473"/>
+    </port>
+    <port protocol="tcp" portid="80">
+      <state state="open" reason="syn-ack" reason_ttl="64"/>
+      <service name="http" product="Apache httpd" version="2.4.18" extrainfo="(Ubuntu)" method="probed" conf="10"/>
+      <script id="http-title" output="Lab Admin Portal — Login"/>
+      <script id="vulners" output="&#10;  cpe:/a:apache:http_server:2.4.18: &#10;    	CVE-2017-15715	8.1	https://vulners.com/cve/CVE-2017-15715&#10;    	CVE-2019-0211	7.8	https://vulners.com/cve/CVE-2019-0211"/>
+    </port>
+    <port protocol="tcp" portid="443">
+      <state state="open" reason="syn-ack" reason_ttl="64"/>
+      <service name="https" product="Apache httpd" version="2.4.18" method="probed" conf="10"/>
+      <script id="ssl-enum-ciphers" output="&#10;  SSLv3: &#10;    ciphers: &#10;      TLS_RSA_WITH_RC4_128_MD5 - F&#10;  TLSv1.0: &#10;    ciphers: &#10;      TLS_RSA_WITH_3DES_EDE_CBC_SHA - D&#10;  TLSv1.2: &#10;    ciphers: &#10;      TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 - A"/>
+      <script id="http-title" output="Lab Admin Portal — Login"/>
+    </port>
+  </ports>
+  <os>
+    <osmatch name="Linux 4.4 - 4.15" accuracy="90" line="3000">
+      <osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="4.X" accuracy="90"/>
+    </osmatch>
+  </os>
+</host>
+<host starttime="1729267281" endtime="1729267295">
+  <status state="up" reason="arp-response" reason_ttl="0"/>
+  <address addr="192.168.10.30" addrtype="ipv4"/>
+  <address addr="00:11:22:33:44:30" addrtype="mac" vendor="HP"/>
+  <hostnames>
+    <hostname name="printer-lobby.lab.local" type="PTR"/>
+  </hostnames>
+  <ports>
+    <port protocol="tcp" portid="23">
+      <state state="open" reason="syn-ack" reason_ttl="64"/>
+      <service name="telnet" product="HP JetDirect telnetd" method="probed" conf="10"/>
+    </port>
+    <port protocol="tcp" portid="80">
+      <state state="open" reason="syn-ack" reason_ttl="64"/>
+      <service name="http" product="HP JetDirect httpd" method="probed" conf="10"/>
+      <script id="http-title" output="HP LaserJet Admin"/>
+    </port>
+    <port protocol="tcp" portid="9100">
+      <state state="open" reason="syn-ack" reason_ttl="64"/>
+      <service name="jetdirect" method="probed" conf="10"/>
+    </port>
+    <port protocol="udp" portid="161">
+      <state state="open|filtered" reason="no-response" reason_ttl="0"/>
+      <service name="snmp" method="table" conf="3"/>
+    </port>
+  </ports>
+  <os>
+    <osmatch name="HP embedded" accuracy="80" line="4000">
+      <osclass type="printer" vendor="HP" osfamily="embedded" accuracy="80"/>
+    </osmatch>
+  </os>
+</host>
+<host starttime="1729267296" endtime="1729267310">
+  <status state="up" reason="arp-response" reason_ttl="0"/>
+  <address addr="192.168.10.40" addrtype="ipv4"/>
+  <address addr="00:11:22:33:44:40" addrtype="mac" vendor="Synology"/>
+  <hostnames>
+    <hostname name="nas-backup.lab.local" type="PTR"/>
+  </hostnames>
+  <ports>
+    <port protocol="tcp" portid="21">
+      <state state="open" reason="syn-ack" reason_ttl="64"/>
+      <service name="ftp" product="ProFTPD" version="1.3.5" method="probed" conf="10"/>
+      <script id="ftp-anon" output="Anonymous FTP login allowed (FTP code 230)&#10;drwxr-xr-x   1 ftp      ftp          4096 Jan 01 00:00 pub"/>
+    </port>
+    <port protocol="tcp" portid="22">
+      <state state="open" reason="syn-ack" reason_ttl="64"/>
+      <service name="ssh" product="OpenSSH" version="8.4" method="probed" conf="10"/>
+    </port>
+    <port protocol="tcp" portid="445">
+      <state state="open" reason="syn-ack" reason_ttl="64"/>
+      <service name="microsoft-ds" product="Samba smbd" version="4.13" method="probed" conf="10"/>
+      <script id="smb-security-mode" output="&#10;  account_used: &lt;blank&gt;&#10;  authentication_level: user&#10;  challenge_response: supported&#10;  message_signing: required"/>
+    </port>
+    <port protocol="tcp" portid="5000">
+      <state state="open" reason="syn-ack" reason_ttl="64"/>
+      <service name="http" product="Synology DiskStation DSM httpd" method="probed" conf="10"/>
+      <script id="http-title" output="Synology DiskStation - Login"/>
+    </port>
+  </ports>
+  <os>
+    <osmatch name="Linux 4.X" accuracy="85" line="5000">
+      <osclass type="storage" vendor="Synology" osfamily="Linux" accuracy="85"/>
+    </osmatch>
+  </os>
+</host>
+<!-- Down host for completeness -->
+<host starttime="1729267311" endtime="1729267312">
+  <status state="down" reason="no-response" reason_ttl="0"/>
+  <address addr="192.168.10.50" addrtype="ipv4"/>
+</host>
+<runstats><finished time="1729267315" timestr="Sat Oct 18 12:01:55 2026" summary="Nmap done at Sat Oct 18 12:01:55 2026; 16 IP addresses (5 hosts up) scanned in 115.00 seconds" elapsed="115.00" exit="success"/>
+<hosts up="5" down="1" total="6"/>
+</runstats>
+</nmaprun>
