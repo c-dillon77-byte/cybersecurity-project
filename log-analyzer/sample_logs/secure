@@ -1,0 +1,7 @@
+Oct 18 11:00:00 lab-rhel sshd[2001]: Failed password for root from 198.51.100.20 port 51001 ssh2
+Oct 18 11:00:08 lab-rhel sshd[2002]: Failed password for root from 198.51.100.20 port 51002 ssh2
+Oct 18 11:00:16 lab-rhel sshd[2003]: Failed password for root from 198.51.100.20 port 51003 ssh2
+Oct 18 11:00:24 lab-rhel sshd[2004]: Failed password for root from 198.51.100.20 port 51004 ssh2
+Oct 18 11:00:32 lab-rhel sshd[2005]: Failed password for root from 198.51.100.20 port 51005 ssh2
+Oct 18 13:00:00 lab-rhel sshd[2100]: Accepted publickey for alice from 10.20.30.40 port 52001 ssh2
+Oct 18 13:10:00 lab-rhel sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/bin/systemctl restart httpd

@@ -16,11 +16,11 @@ Each tool lives in its own folder with its own README, `requirements.txt` and `t
 
 | Project | What it demonstrates | Status |
 |---|---|---|
-| `auth-log-analyzer/` | Parsing Linux `auth.log` / Windows logon events to flag failed-login bursts, brute-force patterns and unusual source IPs; summary report; tested with sample (sanitized) logs | 🟡 Planned |
+| [`log-analyzer/`](log-analyzer/) | Parsing Linux SSH/sudo auth logs (`auth.log`, `secure`, journalctl, `.gz`) to flag brute force, password spraying, success-after-failures and new-IP logins, with severities and MITRE ATT&CK IDs; HTML/JSON/CSV report; tested with synthetic logs | 🔵 In review |
 | `password-auditor/` | Checking passwords against a policy (length, complexity, common/breached-password lists) with hashing and no plaintext storage or logging | 🟡 Planned |
 | `nmap-to-html-report/` | Converting nmap XML output into a clean HTML report (hosts, open ports, services, versions) for sharing scan results | 🟡 Planned |
 
-*Status key: 🟡 Planned · 🟢 In progress · ✅ Complete*
+*Status key: 🟡 Planned · 🟢 In progress · 🔵 In review · ✅ Complete*
 
 ## How to run
 
@@ -32,7 +32,7 @@ cd cybersecurity-project
 python -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
 
-cd <project-folder>              # e.g. auth-log-analyzer
+cd <project-folder>              # e.g. log-analyzer
 pip install -r requirements.txt
 python <script>.py --help
 ```
